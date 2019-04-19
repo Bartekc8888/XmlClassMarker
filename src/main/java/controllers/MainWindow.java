@@ -138,6 +138,8 @@ public class MainWindow implements ModelBindable<MainWindowModel> {
 
         MarkerButtonView markerView = new MarkerButtonView(markerDto);
         hBox.getChildren().add(markerView);
+        Label label = new Label(markerDto.getShortcut());
+        hBox.getChildren().add(label);
         HBox.setHgrow(markerView, Priority.ALWAYS);
         HBox.setMargin(markerView, new Insets(5.d));
 
