@@ -51,6 +51,8 @@ public class MainWindow implements ModelBindable<MainWindowModel> {
     public Button LoadXlsFileButton;
 
     private MedicalTextDto currentText;
+    private String lastXmlDirectory;
+    private String lastSaveDirectory;
 
     @Override
     public void setService(MainWindowModel service) {
@@ -166,10 +168,15 @@ public class MainWindow implements ModelBindable<MainWindowModel> {
         chooser.setTitle("Wybierz plik xml");
         FileChooser.ExtensionFilter extFilter = new FileChooser.ExtensionFilter("Pliki xlsx (*.xlsx)", "*.xlsx");
         chooser.getExtensionFilters().add(extFilter);
+        if(lastXmlDirectory != null) {
+            System.out.println(lastXmlDirectory);
+            chooser.setInitialDirectory(new File(lastXmlDirectory));
+        }
         File file = chooser.showOpenDialog(XlsFilePathButton.getScene().getWindow());
-
         if (file != null) {
-            XlsFilePathField.setText(file.getAbsolutePath());
+            String filePath = file.getAbsolutePath();
+            lastXmlDirectory = file.getParent();
+            XlsFilePathField.setText(filePath);
         } else {
             log.info("Chosen file path is null");
         }
@@ -178,10 +185,14 @@ public class MainWindow implements ModelBindable<MainWindowModel> {
     public void onChooseSaveFolderButtonClicked() {
         DirectoryChooser chooser = new DirectoryChooser();
         chooser.setTitle("Wybierz folder do zapisu");
+        if(lastSaveDirectory != null) {
+            chooser.setInitialDirectory(new File(lastSaveDirectory));
+        }
         File file = chooser.showDialog(SaveFolderField.getScene().getWindow());
 
         if (file != null) {
-            SaveFolderField.setText(file.getAbsolutePath());
+            lastSaveDirectory = file.getAbsolutePath();
+            SaveFolderField.setText(lastSaveDirectory);
         } else {
             log.info("Chosen directory path is null");
         }
