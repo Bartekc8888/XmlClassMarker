@@ -14,6 +14,7 @@ public class MarkerButtonView extends Button {
         this.marker = marker;
 
         setPrefHeight(25.d);
+        setPrefWidth(100.d);
         setMaxWidth(Double.MAX_VALUE);
 
         setText(marker.getDescription());

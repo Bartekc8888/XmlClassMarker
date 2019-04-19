@@ -6,14 +6,13 @@
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.text.Font?>
 <?import org.fxmisc.richtext.StyleClassedTextArea?>
-
 <BorderPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/10.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.MainWindow">
     <stylesheets>
         <URL value="@../css/Buttons.css" />
         <URL value="@../css/Misc.css" />
     </stylesheets>
     <left>
-      <VBox fx:id="MarkerButtonBox" prefWidth="150.0" BorderPane.alignment="CENTER">
+      <VBox fx:id="MarkerButtonBox" prefWidth="175.0" BorderPane.alignment="CENTER">
          <BorderPane.margin>
             <Insets bottom="5.0" left="5.0" top="5.0" />
          </BorderPane.margin>
